@@ -22,7 +22,7 @@ RUN ./utility_namespace_dns.sh
 ## ref. : https://zhuanlan.zhihu.com/p/464563619
 RUN mv /etc/supervisord.conf /etc/supervisord.example.conf
 #RUN cat /etc/supervisord.example.conf | grep -v '^;' | tr -s "\n" > /etc/supervisord.conf
-COPY supervisor_conf/default_supervisor.conf /etc/supervisor.conf
+COPY ./supervisor_conf/default_supervisord.conf /etc/supervisord.conf
 RUN echo "show supervisor setting." && cat /etc/supervisord.conf && echo ""
 
 EXPOSE 9001
