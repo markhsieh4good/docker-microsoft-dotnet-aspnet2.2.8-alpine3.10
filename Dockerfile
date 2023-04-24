@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/nightly/aspnet:2.1.813-alpine3.12
+FROM  mcr.microsoft.com/dotnet/aspnet:2.1.30-alpine3.13
 LABEL MAINTAINER "mark.hsieh <qqzcmark@gmail.com>"
 
 ## install package

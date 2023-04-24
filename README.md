@@ -1,6 +1,6 @@
 # microsoft-dotnet-aspnet
 ```bash
-[v] 2.1.813-alpine3.12
+[v] 2.1.30-alpine3.13
 [x] 6.0.15-alpine3.17-amd64
 ```
 ## install packages
