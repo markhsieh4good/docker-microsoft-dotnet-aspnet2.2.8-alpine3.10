@@ -21,7 +21,10 @@ RUN ./utility_namespace_dns.sh
 ## ref. : https://alpine.pkgs.org/3.17/alpine-main-x86_64/supervisor-4.2.4-r0.apk.html
 ## ref. : https://zhuanlan.zhihu.com/p/464563619
 RUN mv /etc/supervisord.conf /etc/supervisord.example.conf
-RUN cat /etc/supervisord.example.conf | grep -v '^;' | tr -s "\n" > /etc/supervisord.conf
-RUN echo "show supervisor setting." && cat /etc/supervisord.example.conf && echo ""
+#RUN cat /etc/supervisord.example.conf | grep -v '^;' | tr -s "\n" > /etc/supervisord.conf
+COPY supervisor_conf/default_supervisor.conf /etc/supervisor.conf
+RUN echo "show supervisor setting." && cat /etc/supervisord.conf && echo ""
 
-CMD ["supervisord"]
+EXPOSE 9001
+
+CMD ["supervisord", "-c", "/etc/supervisord.conf"]
