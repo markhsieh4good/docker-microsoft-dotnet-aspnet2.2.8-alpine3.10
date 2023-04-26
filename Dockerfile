@@ -5,7 +5,7 @@ LABEL MAINTAINER "mark.hsieh <qqzcmark@gmail.com>"
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 RUN apk update 
 RUN apk add --no-cache procps net-tools bash
-RUN apk add --no-cache tzdata git
+RUN apk add --no-cache tzdata git vim
 RUN apk add --upgrade supervisor
 
 ## setting network
@@ -24,6 +24,7 @@ RUN mv /etc/supervisord.conf /etc/supervisord.example.conf
 #RUN cat /etc/supervisord.example.conf | grep -v '^;' | tr -s "\n" > /etc/supervisord.conf
 COPY ./supervisor_conf/default_supervisord.conf /etc/supervisord.conf
 RUN echo "show supervisor setting." && cat /etc/supervisord.conf | grep -v '^;' | tr -s "\n" && echo ""
+RUN mkdir -p /etc/supervisor.d/
 
 EXPOSE 9001
 
