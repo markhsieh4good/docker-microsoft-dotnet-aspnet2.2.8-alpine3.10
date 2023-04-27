@@ -23,9 +23,10 @@ RUN chmod +x ./utility_namespace_dns.sh
 RUN ./utility_namespace_dns.sh
 
 ## install .Net Support: runtime .dll
+ENV DOTNET_ROOT="/usr/local/donet"
 COPY utility_dotnet_support.sh .
 RUN chmod +x ./utility_dotnet_support.sh
-RUN ./utility_dotnet_support.sh
+RUN ./utility_dotnet_support.sh "${DOTNET_ROOT}"
  
 ## debug
 ## ref. : https://alpine.pkgs.org/3.17/alpine-main-x86_64/supervisor-4.2.4-r0.apk.html
@@ -36,7 +37,8 @@ RUN echo "show supervisor setting." && cat /etc/supervisord.conf | grep -v '^;' 
 RUN mkdir -p /etc/supervisor.d/
 RUN touch /run/supervisord.sock && chmod 777 /run/supervisord.sock
 
-ENV PATH="$PATH:/usr/local/bin"
+ENV PATH="$PATH:/usr/local/bin:${_DOTNET_ROOT}:${_DOTNET_ROOT}/tools"
+RUN env
 WORKDIR /usr/bin
 EXPOSE 9001
 

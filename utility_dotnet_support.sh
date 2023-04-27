@@ -7,14 +7,12 @@ echo "start .NET runtime install"
 # 4.. https://dotnet.microsoft.com/zh-cn/download/dotnet
 
 _PWD=`pwd`
-_DIST_ROOT="/usr/local"
-export DOTNET_ROOT="${_DIST_ROOT}"/dotnet
-export PATH="$PATH:${DOTNET_ROOT}:${DOTNET_ROOT}/tools"
+_DOTNET_ROOT="$1"
 
-mkdir -p "${DOTNET_ROOT}/tools"
-cd "${DOTNET_ROOT}"
+mkdir -p "${_DOTNET_ROOT}/tools"
+cd "${_DOTNET_ROOT}"
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh 
-bash ./dotnet-install.sh --runtime aspnetcore --version 2.2.8
-bash ./dotnet-install.sh --runtime dotnet --version 2.2.8 
+bash ./dotnet-install.sh --runtime aspnetcore --version 2.2.8 --install-dir "${_DOTNET_ROOT}"
+bash ./dotnet-install.sh --runtime dotnet --version 2.2.8 --install-dir "${_DOTNET_ROOT}"
 
 cd "${_PWD}"
