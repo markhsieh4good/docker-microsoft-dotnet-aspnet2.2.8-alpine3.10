@@ -1,6 +1,9 @@
 FROM  mcr.microsoft.com/dotnet/core/aspnet:2.2.8-alpine3.10
 LABEL MAINTAINER "mark.hsieh <qqzcmark@gmail.com>"
 
+RUN mkdir -p /usr/local/src
+WORKDIR /usr/local/src
+
 ## install package
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 RUN apk update 
@@ -33,6 +36,8 @@ RUN echo "show supervisor setting." && cat /etc/supervisord.conf | grep -v '^;' 
 RUN mkdir -p /etc/supervisor.d/
 RUN touch /run/supervisord.sock && chmod 777 /run/supervisord.sock
 
+ENV PATH="$PATH:/usr/local/bin"
+WORKDIR /usr/bin
 EXPOSE 9001
 
 CMD ["supervisord", "-c", "/etc/supervisord.conf"]
