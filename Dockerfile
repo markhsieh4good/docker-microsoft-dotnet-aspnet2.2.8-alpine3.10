@@ -37,7 +37,7 @@ RUN echo "show supervisor setting." && cat /etc/supervisord.conf | grep -v '^;' 
 RUN mkdir -p /etc/supervisor.d/
 RUN touch /run/supervisord.sock && chmod 777 /run/supervisord.sock
 
-ENV PATH="$PATH:/usr/local/bin:${_DOTNET_ROOT}:${_DOTNET_ROOT}/tools"
+ENV PATH="$PATH:${DOTNET_ROOT}:${DOTNET_ROOT}/tools"
 RUN env
 WORKDIR /usr/bin
 EXPOSE 9001
