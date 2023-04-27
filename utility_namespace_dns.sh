@@ -1,4 +1,5 @@
 #!/bin/bash 
+echo "start network default dns setting"
 
 if [ -e "/run/systemd/resolve/resolv.conf" ]; then
   # if has default setting

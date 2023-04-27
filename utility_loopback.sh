@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "start network loopback setting"
 
 if [ ! -e "/etc/network/interfaces" ]; then
     touch /etc/network/interfaces

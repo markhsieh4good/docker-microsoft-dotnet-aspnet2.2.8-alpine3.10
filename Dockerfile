@@ -6,6 +6,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 RUN apk update 
 RUN apk add --no-cache procps net-tools bash
 RUN apk add --no-cache tzdata git vim
+RUN apk add --no-cache curl webget
 RUN apk add --upgrade supervisor
 
 ## setting network
@@ -17,6 +18,11 @@ COPY utility_namespace_dns.sh .
 RUN chmod +x ./utility_namespace_dns.sh
 RUN ./utility_namespace_dns.sh
 
+## install .Net Support: runtime .dll
+COPY utility_dotnet_support.sh .
+RUN chmod +x ./utility_dotnet_support.sh
+RUN ./utility_dotnet_support.sh
+ 
 ## debug
 ## ref. : https://alpine.pkgs.org/3.17/alpine-main-x86_64/supervisor-4.2.4-r0.apk.html
 ## ref. : https://zhuanlan.zhihu.com/p/464563619
