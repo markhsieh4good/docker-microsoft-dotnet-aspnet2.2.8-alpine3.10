@@ -6,5 +6,5 @@ echo "start .NET runtime install"
 # 3.. https://dotnet.microsoft.com/zh-cn/download/dotnet/2.2
 
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
-bash ./dotnet-install.sh --runtime aspnetcore --version 2.2.x
-bash ./dotnet-install.sh --runtime dotnet --version 2.2.x
+bash ./dotnet-install.sh --runtime aspnetcore --version 2.2.8xx
+bash ./dotnet-install.sh --runtime dotnet --version 2.2.8xx
