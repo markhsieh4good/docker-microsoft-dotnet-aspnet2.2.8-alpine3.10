@@ -6,8 +6,9 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 RUN apk update 
 RUN apk add --no-cache procps net-tools bash
 RUN apk add --no-cache tzdata git vim
-RUN apk add --no-cache curl webget
+RUN apk add --no-cache curl wget
 RUN apk add --upgrade supervisor
+RUN rm -rf /var/cache/apk/*
 
 ## setting network
 COPY utility_loopback.sh .
