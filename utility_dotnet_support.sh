@@ -13,6 +13,6 @@ mkdir -p "${_DOTNET_ROOT}/tools"
 cd "${_DOTNET_ROOT}"
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh 
 bash ./dotnet-install.sh --runtime aspnetcore --version 2.2.8 --install-dir "${_DOTNET_ROOT}"
-bash ./dotnet-install.sh --runtime dotnet --version 2.2.8 --install-dir "${_DOTNET_ROOT}"
+bash ./dotnet-install.sh --channel 2.2.8xx --quality preview --install-dir "${_DOTNET_ROOT}"
 
 cd "${_PWD}"
